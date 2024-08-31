@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int findSecondLargest(int a[], int n)
+{
+int flag=0;
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]==a[i+1])
+        {flag ++;}
+        else
+        {
+            int t;
+            for(int i=0;i<n;i++)
+            {
+                for(int j=0;j<i;j++)
+                {
+                    if(a[i]<a[j])
+                    {
+                        t=a[i];
+                        a[i]=a[j];
+                        a[j]=t;
+                    }
+                }
+            }
+         
+        }
+       
+    }
+    int sl=a[n-2];
+    if(n<=2)
+    {
+        return -1;
+    }
+    if(flag>0)
+    {
+        return -1;
+    }
+    else
+    {
+        return sl;
+    }
+}
+int main() 
+{
+    int n;
+    int a[100];
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    int res=findSecondLargest(a,n);
+    printf("%d",res);
+      
+    return 0;
+}
